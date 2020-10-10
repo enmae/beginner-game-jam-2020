@@ -6,25 +6,42 @@ public class characterMovement : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public bool isGrounded;
-    public float jumpForce = 2.0f;
-    Rigidbody2D rb;
+    public float scrollSpeed;
+    public float horizontalAcceleration;
+    public float jumpForce;
+    public float jetPackForce;
+    private Rigidbody2D rb;
+    private bool isGrounded = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.velocity = new Vector2(scrollSpeed, 0f);
     }
 
-    void onCollisionStay() {
+    void OnCollisionEnter2D(Collision2D col)
+    {
         isGrounded = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            rb.velocity = new Vector2(rb.velocity.x, 10f);
+        // Handles Jumping
+        if (Input.GetKey(KeyCode.Space) && isGrounded) {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + jumpForce);
             isGrounded = false;
+        }
+    }
+
+    void FixedUpdate() {
+        //Handles Jetpack
+        if (Input.GetKey(KeyCode.Space)) {
+            rb.AddForce(transform.up * jetPackForce, ForceMode2D.Impulse);
+        }
+        // Handles Horizontal Acceleration after stopping
+        if (rb.velocity.x < scrollSpeed) {
+            rb.AddForce(transform.right * horizontalAcceleration, ForceMode2D.Impulse);
         }
     }
 }
