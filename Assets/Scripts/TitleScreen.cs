@@ -18,8 +18,11 @@ public class TitleScreen : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void Resume() {
+        // to make canvas visible
+    }
+
     public void Options() {
-        // Set up a scene for option management?
-        SceneManager.LoadScene(2);
+        // secondary canvas for different options
     }
 }
