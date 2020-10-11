@@ -6,17 +6,20 @@ using UnityEngine.SceneManagement;
 public class TitleScreen : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         
     }
 
     public void Play() {
         SceneManager.LoadScene(1);
+    }
+
+    public void Options() {
+        // Set up a scene for option management?
+        SceneManager.LoadScene(2);
     }
 }
