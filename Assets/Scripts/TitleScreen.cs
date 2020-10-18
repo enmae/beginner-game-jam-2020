@@ -26,6 +26,10 @@ public class TitleScreen : MonoBehaviour {
         }
     }
 
+    public void Play() {
+        SceneManager.LoadScene(1);
+    }
+
     void Pause() {
         pauseMenuUI.SetActive(true);
         optionMenuUI.SetActive(false);
