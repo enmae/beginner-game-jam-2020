@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Parallex : MonoBehaviour
+public class SpecialParallexForBackground : MonoBehaviour
 {
     private float length;
     private float startpos;
@@ -15,8 +15,8 @@ public class Parallex : MonoBehaviour
     {
         actualStartPos = transform.position.x;
         startpos = transform.position.x;
-        length = GetComponent<SpriteRenderer>().bounds.size.x;
-        
+        length = 100;
+
     }
 
     void FixedUpdate()
