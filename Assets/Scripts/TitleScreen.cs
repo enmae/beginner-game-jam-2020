@@ -9,6 +9,7 @@ public class TitleScreen : MonoBehaviour {
     public GameObject pauseMenuUI;
     public GameObject optionMenuUI;
     public GameObject gameOverMenuUI;
+    public Text scoreText;
 
     public static bool gameIsPaused = false;
     public static bool optionsAreShowing = false;
@@ -74,5 +75,7 @@ public class TitleScreen : MonoBehaviour {
     {
         Time.timeScale = 0;
         gameOverMenuUI.SetActive(true);
+        float score = GameObject.Find("Player").GetComponent<Transform>().position.x / 10;
+        scoreText.text = "Score: " + ((int)score).ToString();
     }
 }
