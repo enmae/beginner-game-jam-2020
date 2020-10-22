@@ -82,15 +82,15 @@ public class ObstacleGenerator : MonoBehaviour
         
         GameObject newObstacle = pool[obstacleNum];
         
-        float x = lastObstaclePos + Random.Range(26, 32);
+        float x = lastObstaclePos + Random.Range(27, 32);
         float y;
 
         float minY = groundPos + newObstacle.GetComponent<Transform>().localScale.y * 1.27f; 
         float maxY = ceilingPos - newObstacle.GetComponent<Transform>().localScale.y * 1.27f;
 
         // we make most obstacles stick to either the ceiling or floor
-        int num = Random.Range(1, 10);
-        if (num > 4)
+        int num = Random.Range(1, 11);
+        if (num > 5)
         {
             if (num % 2 == 0)
             {

@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using TMPro;
 
 public class TitleScreen : MonoBehaviour {
     public GameObject pauseMenuUI;
     public GameObject optionMenuUI;
     public GameObject gameOverMenuUI;
-    public Text scoreText;
-    public Text highscoreText;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI highscoreText;
     public Slider musicVolume;
     public AudioSource music;
 
