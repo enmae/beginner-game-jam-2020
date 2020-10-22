@@ -61,7 +61,7 @@ public class ObstacleGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((int)player.position.x > lastObstaclePos - 50)
+        if ((int)player.position.x > lastObstaclePos - 40)
         {
             generateNewObstacle();
         }
@@ -82,11 +82,11 @@ public class ObstacleGenerator : MonoBehaviour
         
         GameObject newObstacle = pool[obstacleNum];
         
-        float x = lastObstaclePos + Random.Range(19, 26);
+        float x = lastObstaclePos + Random.Range(26, 32);
         float y;
 
-        float minY = groundPos + newObstacle.GetComponent<Transform>().localScale.y / 2;
-        float maxY = ceilingPos - newObstacle.GetComponent<Transform>().localScale.y / 2;
+        float minY = groundPos + newObstacle.GetComponent<Transform>().localScale.y * 1.27f; 
+        float maxY = ceilingPos - newObstacle.GetComponent<Transform>().localScale.y * 1.27f;
 
         // we make most obstacles stick to either the ceiling or floor
         int num = Random.Range(1, 10);
@@ -94,10 +94,10 @@ public class ObstacleGenerator : MonoBehaviour
         {
             if (num % 2 == 0)
             {
-                y = minY;
+                y = maxY;
             } else
             {
-                y = maxY;
+                y = minY;
             }
         } else // we make the obstacle a floating boi
         {
@@ -108,7 +108,7 @@ public class ObstacleGenerator : MonoBehaviour
 
         newObstacle.GetComponent<Transform>().position = new Vector3(x, y, 0);
 
-        lastObstaclePos = x + newObstacle.GetComponent<Transform>().localScale.x;
+        lastObstaclePos = x + newObstacle.GetComponent<Transform>().localScale.x / 1.5f; // same thing here
         
     }
 }
