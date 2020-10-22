@@ -11,6 +11,8 @@ public class TitleScreen : MonoBehaviour {
     public GameObject gameOverMenuUI;
     public Text scoreText;
     public Text highscoreText;
+    public Slider musicVolume;
+    public AudioSource music;
 
     public static bool gameIsPaused = false;
     public static bool optionsAreShowing = false;
@@ -29,6 +31,11 @@ public class TitleScreen : MonoBehaviour {
                 Pause();
             }
         }
+        if (musicVolume != null)
+        {
+            music.volume = musicVolume.value / 100;
+        }
+        
     }
 
     public void Play() {
