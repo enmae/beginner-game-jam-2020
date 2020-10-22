@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class TitleScreen : MonoBehaviour {
     public GameObject pauseMenuUI;
     public GameObject optionMenuUI;
+    public GameObject gameOverMenuUI;
 
     public static bool gameIsPaused = false;
     public static bool optionsAreShowing = false;
@@ -29,10 +30,12 @@ public class TitleScreen : MonoBehaviour {
     }
 
     public void Play() {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Game");
     }
 
     public void Replay() {
+        Time.timeScale = 1;
+        gameOverMenuUI.SetActive(false);
         string currentScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentScene);
     }
@@ -58,14 +61,18 @@ public class TitleScreen : MonoBehaviour {
         optionsAreShowing = true;
         pauseIsHidden = true;
         pauseMenuUI.SetActive(false);
-        Debug.Log("Loading options...");
     }
 
     public void QuitOptions() {
-        Debug.Log("Quitting options...");
         optionsAreShowing = false;
         pauseIsHidden = false;
         optionMenuUI.SetActive(false);
         pauseMenuUI.SetActive(true);
+    }
+
+    public void gameOver()
+    {
+        Time.timeScale = 0;
+        gameOverMenuUI.SetActive(true);
     }
 }

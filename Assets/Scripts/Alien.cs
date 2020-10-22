@@ -5,6 +5,7 @@ using UnityEngine;
 public class Alien : MonoBehaviour
 {
     public float speed;
+    public GameObject menu;
 
     // Start is called before the first frame update
     void Start()
@@ -12,18 +13,11 @@ public class Alien : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            // this is just temporary
-            Time.timeScale = 0;
+            menu.GetComponent<TitleScreen>().gameOver();
         }
     }
 }
