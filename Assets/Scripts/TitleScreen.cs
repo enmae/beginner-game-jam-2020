@@ -10,6 +10,7 @@ public class TitleScreen : MonoBehaviour {
     public GameObject optionMenuUI;
     public GameObject gameOverMenuUI;
     public Text scoreText;
+    public Text highscoreText;
 
     public static bool gameIsPaused = false;
     public static bool optionsAreShowing = false;
@@ -75,7 +76,19 @@ public class TitleScreen : MonoBehaviour {
     {
         Time.timeScale = 0;
         gameOverMenuUI.SetActive(true);
-        float score = GameObject.Find("Player").GetComponent<Transform>().position.x / 10;
-        scoreText.text = "Score: " + ((int)score).ToString();
+        int score = (int)GameObject.Find("Player").GetComponent<Transform>().position.x / 10;
+        if (PlayerPrefs.HasKey("highscore"))
+        {
+            if (score > PlayerPrefs.GetInt("highscore"))
+            {
+                PlayerPrefs.SetInt("highscore", score);
+            }
+        } else
+        {
+            PlayerPrefs.SetInt("highscore", score);
+        }
+        int highscore = PlayerPrefs.GetInt("highscore");
+        scoreText.text = "Score: " + score.ToString();
+        highscoreText.text = "Highscore: " + highscore.ToString();
     }
 }
