@@ -98,4 +98,10 @@ public class TitleScreen : MonoBehaviour {
         scoreText.text = "Score: " + score.ToString();
         highscoreText.text = "Highscore: " + highscore.ToString();
     }
+
+    public void loadMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Title");
+    }
 }
